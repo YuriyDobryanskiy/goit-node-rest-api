@@ -1,5 +1,6 @@
 import HttpError from "../helpers/HttpError.js";
 import contactsService from "../services/contactsServices.js";
+import contactsModel from "../schemas/contactsMongooseSchema.js";
 
 export const getAllContacts = async (req, res, next) => {
   const allContacts = await contactsService.listContacts(
@@ -18,7 +19,10 @@ export const getAllContacts = async (req, res, next) => {
 };
 
 export const getOneContact = async (req, res, next) => {
-  const contactById = await contactsService.getContactById(req.params.id);
+  const contactById = await contactsService.getContactById(
+    req.params.id,
+    req.user.id
+  );
 
   if (contactById === null) {
     next(HttpError(404));
