@@ -5,10 +5,9 @@ export const registerUserSchema = Joi.object({
   password: Joi.string()
     .min(8)
     .max(25)
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/)
+    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/, "password")
     .required(),
   subscription: Joi.string().valid("starter", "pro", "business"),
-  avatarURL: Joi.string(),
 });
 
 export const subscriptionSchema = Joi.object({
