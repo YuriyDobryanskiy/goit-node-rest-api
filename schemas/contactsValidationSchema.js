@@ -13,6 +13,7 @@ export const createContactSchema = Joi.object({
     .pattern(/^[0-9]+$/)
     .required(),
   favorite: Joi.boolean(),
+  owner: Joi.string().required(),
 });
 
 export const updateContactSchema = Joi.object({
