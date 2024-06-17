@@ -6,7 +6,7 @@ import {
   createContact,
   updateContact,
   setFavorite,
-} from "../controllers/contactsControllers.js";
+} from "../controllers/contactController/contactsControllers.js";
 import validateBody from "../helpers/validateBody.js";
 import {
   createContactSchema,
@@ -22,15 +22,20 @@ const createValidation = validateBody(createContactSchema);
 const contactsRouter = express.Router();
 
 contactsRouter.get("/", getAllContacts);
+
 contactsRouter.get("/:id", getOneContact);
+
 contactsRouter.delete("/:id", deleteContact);
+
 contactsRouter.post(
   "/",
   createContactMiddleware,
   createValidation,
   createContact
 );
+
 contactsRouter.put("/:id", editValidation, updateContact);
+
 contactsRouter.patch("/:id/favorite", editFavoriteValidation, setFavorite);
 
 export default contactsRouter;

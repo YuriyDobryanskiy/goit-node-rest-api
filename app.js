@@ -31,8 +31,8 @@ mongoose
   .connect(DB_KEY)
   .then(() => {
     console.log("Connected to database");
-    app.listen(8080, () => {
-      console.log("Server is running. Use our API on port: 8080");
+    app.listen(3000, () => {
+      console.log("Server is running. Use our API on port: 3000");
     });
   })
   .catch((e) => {

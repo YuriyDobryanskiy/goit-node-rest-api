@@ -8,13 +8,20 @@ const contactSchema = new mongoose.Schema(
     },
     email: {
       type: String,
+      required: [true],
     },
     phone: {
       type: String,
+      required: [true],
     },
     favorite: {
       type: Boolean,
       default: false,
+    },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+      required: [true],
     },
   },
   {

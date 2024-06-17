@@ -5,7 +5,7 @@ import {
   registerUser,
   getUserData,
   updateSubscription,
-} from "../controllers/usersControllers.js";
+} from "../controllers/usersController/usersController.js";
 import {
   UserDataValidation,
   subscriptionTypeValidation,
