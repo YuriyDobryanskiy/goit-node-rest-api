@@ -16,7 +16,7 @@ export const registerUser = async (req, res, next) => {
 
     const avatarURL = gravatar.url(req.body.email, { s: "100" }, true);
     const verificationKey = crypto.randomUUID();
-    console.log(verificationKey);
+    //console.log(verificationKey);
     const newUserData = {
       email: req.body.email,
       password: hashPassword,
@@ -43,12 +43,12 @@ export const loginUser = async (req, res, next) => {
 
     const isUser = await userModel.findOne({ email });
     if (isUser === null) {
-      console.log("Email not registered");
+      //console.log("Email not registered");
       return next(HttpError(401, "Email or password is wrong"));
     }
     const isPassword = await bcrypt.compare(password, isUser.password);
     if (!isPassword) {
-      console.log("Incorrect password");
+      //console.log("Incorrect password");
       return next(HttpError(401, "Email or password is wrong"));
     }
     if (isUser.verificated === false) {
@@ -126,7 +126,7 @@ export const setNewAvatar = async (req, res, next) => {
 
     res.send({ avatarURL: newUserData.avatarURL });
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     next(HttpError(error.status));
   }
 };
