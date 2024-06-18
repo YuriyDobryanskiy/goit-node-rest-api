@@ -9,11 +9,12 @@ import { checkToken } from "./middlewares/checkTokenMiddleware.js";
 
 const DB_KEY = process.env.DB_KEY;
 
-const app = express();
+export const app = express();
 
 app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public"));
 
 app.use("/api/contacts", checkToken, contactsRouter);
 app.use("/api/users", usersRouter);
@@ -26,6 +27,8 @@ app.use((err, req, res, next) => {
   const { status = 500, message = "Server error" } = err;
   res.status(status).json({ message });
 });
+
+// Comment code bellow for test
 
 mongoose
   .connect(DB_KEY)
