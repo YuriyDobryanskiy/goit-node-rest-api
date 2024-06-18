@@ -10,16 +10,6 @@ const transport = nodemailer.createTransport({
   },
 });
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.meta.ua",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_META_SERVICE_USER,
-    pass: process.env.EMAIL_META_SERVICE_PASSWORD,
-  },
-});
-
 export const sendVerificationMail = async (userMail, verificationLink) => {
   const message = {
     from: "hw06_contact_app@meta.ua",
